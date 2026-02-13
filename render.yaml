@@ -1,0 +1,40 @@
+services:
+    # 1. Backend Service (Web Service)
+    - type: web
+      name: evisa-backend
+      env: node
+      plan: free
+      rootDir: backend
+      buildCommand: npm install && npm run build
+      startCommand: npm start
+      envVars:
+          - key: NODE_ENV
+            value: production
+          - key: STRIPE_SECRET_KEY
+            sync: false # User must set this in dashboard
+      autoDeploy: false
+
+    # 2. Frontend Service (Static Site)
+    - type: web
+      # Note: In render.yaml 'web' with 'static' env is how you define static sites sometimes,
+      # but strictly speaking 'type: static' is preferred if supported by blueprint,
+      # usually it is 'type: web' with 'env: static' for static sites in blueprints.
+      # Let's check Render docs standard: type: web, env: static is correct for static sites.
+      name: evisa-frontend
+      env: static
+      rootDir: frontend
+      buildCommand: npm install && npm run build
+      staticPublishPath: ./dist
+      envVars:
+          - key: VITE_STRIPE_PUBLISHABLE_KEY
+            sync: false
+      routes:
+          # Proxy API requests to the Backend Service
+          - type: rewrite
+            source: /api/*
+            destination: https://evisa-backend.onrender.com/api/* # User must update this URL!
+          # SPA Fallback
+          - type: rewrite
+            source: /*
+            destination: /index.html
+      autoDeploy: false
