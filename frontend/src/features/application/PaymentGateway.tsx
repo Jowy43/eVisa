@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Card } from '../../components/ui/Card';
 import { Button } from '../../components/ui/Button';
 import { PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
@@ -16,18 +16,17 @@ export const PaymentGateway: React.FC<PaymentGatewayProps> = ({ amount, onPaymen
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
 
-  const handleSubmit = async (event: React.FormEvent) => {
+  const handleSubmit = useCallback(async (event: React.FormEvent) => {
     event.preventDefault();
 
     if (!stripe || !elements) {
-      // Stripe.js has not yet loaded.
       return;
     }
 
     setIsProcessing(true);
 
-    // 1. Create PaymentIntent on the backend
     try {
+      // 1. Create PaymentIntent on the backend
       const { clientSecret } = await fetch('/api/payment/create-payment-intent', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -39,7 +38,7 @@ export const PaymentGateway: React.FC<PaymentGatewayProps> = ({ amount, onPaymen
         elements,
         clientSecret,
         confirmParams: {
-          return_url: window.location.origin, // Not used for redirect-less flow but required
+          return_url: window.location.origin,
         },
         redirect: 'if_required',
       });
@@ -60,7 +59,7 @@ export const PaymentGateway: React.FC<PaymentGatewayProps> = ({ amount, onPaymen
     } finally {
       setIsProcessing(false);
     }
-  };
+  }, [stripe, elements, amount, onPaymentSuccess]);
 
   return (
     <Card className="payment-form" style={{ maxWidth: '500px', margin: '0 auto' }}>

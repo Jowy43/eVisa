@@ -18,7 +18,8 @@ export const Button: React.FC<ButtonProps> = ({
   
   return (
     <button 
-      className={`${baseClass} ${variantClass} ${widthClass} ${className}`} 
+      className={`${baseClass} ${variantClass} ${widthClass} hover-scale focus-ring ${className}`} 
+      style={props.style}
       {...props}
     >
       {children}

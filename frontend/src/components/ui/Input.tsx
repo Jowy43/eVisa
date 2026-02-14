@@ -5,37 +5,25 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   error?: string;
 }
 
-export const Input: React.FC<InputProps> = ({ label, error, id, ...props }) => {
+export const Input: React.FC<InputProps> = React.memo(({ label, error, id, ...props }) => {
   return (
-    <div className="input-group" style={{ marginBottom: '16px' }}>
+    <div className="input-group mb-lg">
       <label 
         htmlFor={id} 
-        style={{ 
-          display: 'block', 
-          marginBottom: '8px', 
-          fontWeight: 500,
-          color: 'var(--color-text-main)'
-        }}
+        className="input-label"
       >
         {label}
       </label>
       <input
         id={id}
-        className={`input ${error ? 'input-error' : ''}`}
-        style={{
-          width: '100%',
-          padding: '12px',
-          borderRadius: '4px',
-          border: `1px solid ${error ? '#d93025' : 'var(--color-border)'}`,
-          fontSize: '16px'
-        }}
+        className={`input input-pro ${error ? 'input-error' : ''}`}
         {...props}
       />
       {error && (
-        <span style={{ color: '#d93025', fontSize: '12px', marginTop: '4px', display: 'block' }}>
+        <span style={{ color: '#d93025', fontSize: '14px', marginTop: '6px', display: 'block' }}>
           {error}
         </span>
       )}
     </div>
   );
-};
+});
