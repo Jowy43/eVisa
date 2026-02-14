@@ -5,9 +5,21 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const router = Router();
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
-	apiVersion: "2026-01-28.clover", // Updated to match typings
-});
+
+if (!process.env.STRIPE_SECRET_KEY) {
+	console.error(
+		"❌ FATAL ERROR: STRIPE_SECRET_KEY is missing in environment variables.",
+	);
+	// We don't throw here to allow the server to start (for other routes),
+	// but this route will fail if called.
+}
+
+const stripe = new Stripe(
+	process.env.STRIPE_SECRET_KEY || "dummy_key_to_prevent_crash_on_startup",
+	{
+		apiVersion: "2026-01-28.clover",
+	},
+);
 
 router.post("/create-payment-intent", async (req: Request, res: Response) => {
 	try {
