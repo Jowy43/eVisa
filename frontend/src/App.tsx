@@ -7,6 +7,8 @@ import { HowItWorks } from './features/landing/HowItWorks';
 import { Reviews } from './features/landing/Reviews';
 import { StripeProvider } from './providers/StripeProvider';
 
+import { FAQ } from './features/landing/FAQ';
+
 // Lazy load the heavy Application Form
 const ApplicationForm = lazy(() => import('./features/application/ApplicationForm').then(module => ({ default: module.ApplicationForm })));
 
@@ -23,6 +25,7 @@ function App() {
             <WhyChooseUs />
             <HowItWorks />
             <Reviews />
+            <FAQ />
           </>
         ) : (
           <div className="container" style={{ padding: '40px 0', maxWidth: '800px' }}>
