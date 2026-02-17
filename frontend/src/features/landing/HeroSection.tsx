@@ -146,16 +146,16 @@ export const HeroSection: React.FC<{ onApplyClick: () => void }> = ({ onApplyCli
           </div>
 
           {/* Traveler Image */}
-          <div style={{ position: 'relative', height: '400px', width: '100%', display: 'flex', justifyContent: 'center' }}>
+          <div style={{ position: 'relative', height: '500px', width: '100%', display: 'flex', justifyContent: 'center', marginTop: '40px' }}>
              <img 
-               src="https://images.unsplash.com/photo-1502472584811-0a2f2ca8eb0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1712&q=80" 
+               src="https://images.unsplash.com/photo-1500835556837-99ac94a94552?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
                alt="Happy Traveler" 
                style={{ 
                  height: '100%', 
                  objectFit: 'contain', 
-                 filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.1))',
-                 maskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)',
-                 WebkitMaskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)' 
+                 filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.15))',
+                 maskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)',
+                 WebkitMaskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)' 
                }} 
              />
           </div>

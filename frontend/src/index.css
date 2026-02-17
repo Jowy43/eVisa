@@ -149,6 +149,19 @@ ul {
 	margin-bottom: var(--spacing-lg);
 }
 
+.flex-col {
+	flex-direction: column;
+}
+.min-h-screen {
+	min-height: 100vh;
+}
+.font-sans {
+	font-family: var(--font-family-base);
+}
+.w-full {
+	width: 100%;
+}
+
 /* Component Styles */
 .card {
 	background-color: var(--color-white);
