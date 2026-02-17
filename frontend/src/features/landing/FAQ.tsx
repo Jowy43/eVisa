@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card } from '../../components/ui/Card';
+
 
 export const FAQ: React.FC = () => {
   const faqs = [
