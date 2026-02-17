@@ -43,11 +43,55 @@ export const Navbar: React.FC = React.memo(() => {
               I will use window.innerWidth? No, bad practice.
               I will use a media query styling approach via style tag or just className and ensuring index.css has it.
            */}
-           <ul style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
-            <li><a href="#" style={{ fontWeight: 500, color: 'var(--color-text-main)', fontSize: '15px' }}>Verificar estado</a></li>
-            <li><a href="#" style={{ fontWeight: 500, color: 'var(--color-text-main)', fontSize: '15px' }}>Ayuda</a></li>
+           <ul style={{ display: 'flex', alignItems: 'center', gap: '16px', margin: 0, padding: 0, listStyle: 'none' }}>
             <li>
-              <Button variant="outline" style={{ padding: '8px 20px', fontSize: '14px', borderColor: 'var(--color-border)', color: 'var(--color-text-main)' }}>
+              <Button 
+                style={{ 
+                  backgroundColor: '#000', 
+                  color: '#fff', 
+                  border: 'none',
+                  padding: '8px 24px',
+                  fontSize: '14px',
+                  fontWeight: 600,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  borderRadius: '999px'
+                }}
+              >
+                <span>←</span> Finalizar solicitud
+              </Button>
+            </li>
+            <li>
+              <button style={{ 
+                width: '40px', 
+                height: '40px', 
+                borderRadius: '50%', 
+                border: '1px solid var(--color-border)', 
+                background: '#fff',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer'
+              }}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="2" y1="12" x2="22" y2="12"></line>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                </svg>
+              </button>
+            </li>
+            <li>
+              <Button 
+                variant="outline" 
+                style={{ 
+                  padding: '8px 24px', 
+                  fontSize: '14px', 
+                  borderColor: 'var(--color-border)', 
+                  color: 'var(--color-text-main)',
+                  fontWeight: 600 
+                }}
+              >
                 Iniciar sesión
               </Button>
             </li>

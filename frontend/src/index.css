@@ -220,3 +220,10 @@ ul {
 	box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
 	outline: none;
 }
+
+.input-group-hover {
+	transition: border-color 0.2s ease;
+}
+.input-group-hover:hover {
+	border-color: var(--color-primary) !important;
+}

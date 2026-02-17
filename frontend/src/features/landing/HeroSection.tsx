@@ -5,128 +5,161 @@ export const HeroSection: React.FC<{ onApplyClick: () => void }> = ({ onApplyCli
   return (
     <div style={{ 
       position: 'relative',
-      minHeight: '650px',
+      minHeight: '850px',
       display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
       alignItems: 'center',
-      overflow: 'hidden'
+      overflow: 'hidden',
+      background: 'linear-gradient(135deg, #f9fdfb 0%, #e6f9f5 100%)',
+      paddingTop: '80px',
+      paddingBottom: '120px'
     }}>
-      {/* Background Image with Overlay */}
-      <div style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        backgroundImage: 'url("https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-4.0.3&auto=format&fit=crop&w=2021&q=80")',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        zIndex: -2
-      }} />
-      <div style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        background: 'linear-gradient(180deg, rgba(230, 249, 245, 0.9) 0%, rgba(255, 255, 255, 0.4) 100%)',
-        zIndex: -1
-      }} />
+      
+      {/* Bottom Wave SVG */}
+      <div style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', lineHeight: 0, transform: 'rotate(180deg)' }}>
+        <svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#00d474" fillOpacity="0.05" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+      </div>
 
-      <div className="container">
-        <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+      <div className="container" style={{ position: 'relative', zIndex: 1, width: '100%', maxWidth: '1200px' }}>
+        <div style={{ textAlign: 'center', maxWidth: '900px', margin: '0 auto' }}>
+          
           {/* Headline */}
           <h1 style={{ 
             fontSize: '64px', 
-            marginBottom: '24px', 
+            marginBottom: '48px', 
             color: 'var(--color-text-main)',
             fontWeight: 800,
             lineHeight: '1.1',
             letterSpacing: '-1.5px'
           }}>
-            La forma <span style={{ color: 'var(--color-primary)' }}>más rápida</span><br />
+            La forma <span style={{ 
+              background: 'linear-gradient(90deg, #00d09c 0%, #009970 100%)', 
+              WebkitBackgroundClip: 'text', 
+              WebkitTextFillColor: 'transparent' 
+            }}>más eficiente</span><br />
             de conseguir tus visados
           </h1>
-          
-          <p style={{ fontSize: '20px', color: 'var(--color-text-main)', marginBottom: '48px', fontWeight: 500 }}>
-            Obtén tu documento de viaje en 3 sencillos pasos.
-          </p>
 
-          {/* Search/Filter Box - "Floating Island" */}
+          {/* Search Widget - Split Inputs */}
           <div style={{ 
-            background: '#fff',
-            padding: '12px',
-            borderRadius: '100px', // Pill shape like iVisa new design
-            boxShadow: '0 8px 40px rgba(0, 41, 37, 0.12)',
             display: 'flex',
             alignItems: 'center',
-            gap: '8px',
-            border: '1px solid #e0e6e4'
+            justifyContent: 'center',
+            gap: '16px',
+            flexWrap: 'wrap',
+            marginBottom: '64px'
           }}>
             
             {/* Passport Input */}
             <div style={{ 
-              flex: 1, 
+              background: '#fff',
+              padding: '16px 24px',
+              borderRadius: '16px',
+              boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
               display: 'flex', 
-              alignItems: 'center', 
-              gap: '12px', 
-              padding: '12px 24px',
-              borderRight: '1px solid #e0e6e4'
-            }}>
-              <span style={{ fontSize: '24px' }}>🌏</span>
-              <div style={{ textAlign: 'left' }}>
-                <div style={{ fontSize: '12px', fontWeight: 700, color: '#002925', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Soy ciudadano de</div>
-                <div style={{ fontSize: '16px', color: '#5f7470' }}>España</div>
-              </div>
+              flexDirection: 'column',
+              width: '320px',
+              border: '1px solid transparent',
+              cursor: 'pointer',
+              transition: 'all 0.2s ease'
+            }} className="input-group-hover">
+               <span style={{ fontSize: '12px', fontWeight: 700, color: '#002925', marginBottom: '4px', textAlign: 'left' }}>Mi pasaporte</span>
+               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                 <span style={{ fontSize: '20px' }}>🇪🇸</span>
+                 <span style={{ fontSize: '16px', fontWeight: 500 }}>España</span>
+                 <span style={{ marginLeft: 'auto', color: '#ccc' }}>▼</span>
+               </div>
             </div>
 
             {/* Destination Input */}
             <div style={{ 
-              flex: 1, 
+              background: '#fff',
+              padding: '16px 24px',
+              borderRadius: '16px',
+              boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
               display: 'flex', 
-              alignItems: 'center', 
-              gap: '12px', 
-              padding: '12px 24px'
+              flexDirection: 'column',
+              width: '320px',
+              border: '1px solid transparent',
+              transition: 'all 0.2s ease'
             }}>
-              <span style={{ fontSize: '24px' }}>✈️</span>
-              <div style={{ textAlign: 'left', width: '100%' }}>
-                <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--color-text-main)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Viajo a</div>
-                <input 
-                  type="text" 
-                  placeholder="Escribe un destino..." 
-                  style={{ 
-                    border: 'none', 
-                    outline: 'none', 
-                    width: '100%', 
-                    fontSize: '16px', 
-                    color: 'var(--color-text-main)',
-                    fontWeight: 500
-                  }}
-                />
-              </div>
+               <span style={{ fontSize: '12px', fontWeight: 700, color: '#002925', marginBottom: '4px', textAlign: 'left' }}>Mi destino</span>
+               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                 <span style={{ fontSize: '20px' }}>✈️</span>
+                 <input 
+                    type="text" 
+                    placeholder="Viajo a..." 
+                    style={{ border: 'none', outline: 'none', fontSize: '16px', width: '100%', fontWeight: 500 }}
+                  />
+               </div>
             </div>
 
-            {/* Action Button - Round */}
+            {/* Action Button */}
             <Button 
                onClick={onApplyClick} 
                style={{ 
-                 height: '64px',
+                 height: '78px',
+                 padding: '0 40px',
                  fontSize: '18px',
-                 boxShadow: '0 4px 12px rgba(0, 212, 116, 0.4)'
+                 borderRadius: '16px',
+                 backgroundColor: '#00d09c',
+                 color: '#002925',
+                 fontWeight: 700,
+                 boxShadow: '0 10px 30px rgba(0, 208, 156, 0.3)',
+                 border: 'none'
                }}
+               className="hover-lift"
              >
-              Empezar
+              Inicia tu solicitud →
             </Button>
           </div>
 
-          {/* Trust Badge */}
-          <div style={{ marginTop: '48px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <span style={{ color: '#00b67a', fontSize: '28px' }}>★</span> 
-              <span style={{ fontSize: '20px', fontWeight: 700, color: '#002925' }}>Trustpilot</span>
+          {/* Trustpilot Widget */}
+          <div style={{ 
+            background: '#fff', 
+            display: 'inline-flex', 
+            alignItems: 'center', 
+            gap: '12px',
+            padding: '8px 16px',
+            borderRadius: '12px',
+            boxShadow: '0 2px 10px rgba(0,0,0,0.05)',
+            marginBottom: '40px'
+          }}>
+            <div style={{ display: 'flex', gap: '2px' }}>
+              {[1,2,3,4,5].map(i => (
+                <div key={i} style={{ 
+                  background: '#00b67a', 
+                  width: '20px', 
+                  height: '20px', 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  justifyContent: 'center',
+                  color: 'white',
+                  fontSize: '12px'
+                }}>★</div>
+              ))}
             </div>
-            <div style={{ height: '24px', width: '1px', background: '#ccc' }}></div>
-            <span style={{ color: '#002925', fontWeight: 600 }}>Excelentes reseñas de +40,000 viajeros</span>
+            <span style={{ fontWeight: 700, color: '#002925' }}>Trustpilot</span>
           </div>
+
+          {/* Traveler Image */}
+          <div style={{ position: 'relative', height: '400px', width: '100%', display: 'flex', justifyContent: 'center' }}>
+             <img 
+               src="https://images.unsplash.com/photo-1502472584811-0a2f2ca8eb0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1712&q=80" 
+               alt="Happy Traveler" 
+               style={{ 
+                 height: '100%', 
+                 objectFit: 'contain', 
+                 filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.1))',
+                 maskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)',
+                 WebkitMaskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)' 
+               }} 
+             />
+          </div>
+
         </div>
       </div>
     </div>
