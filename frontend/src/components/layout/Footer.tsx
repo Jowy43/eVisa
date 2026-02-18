@@ -1,60 +1,64 @@
 import React from 'react';
 
+/**
+ * Footer component matching iVisa.com/es exactly
+ *
+ * @returns A JSX element with popular links, company info, and legal links
+ */
 export const Footer: React.FC = React.memo(() => {
   return (
-    <footer style={{ backgroundColor: 'var(--color-bg-light)', padding: '80px 0 40px', borderTop: '1px solid var(--color-border)' }}>
+    <footer style={{ backgroundColor: '#002925', padding: '60px 0 32px', color: '#fff' }}>
       <div className="container">
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '48px', marginBottom: '64px' }}>
-          {/* Column 1: Brand */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <div style={{ fontSize: '24px', fontWeight: 800, color: '#00d09c' }}>
-              iVisa
+
+        {/* Top Section - Links */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', gap: '32px', marginBottom: '48px', flexWrap: 'wrap' }}>
+
+          {/* Column 1 */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            <a href="#" style={{ color: 'rgba(255,255,255,0.7)', fontSize: '14px', textDecoration: 'none' }}>Sobre iVisa</a>
+            <a href="#" style={{ color: 'rgba(255,255,255,0.7)', fontSize: '14px', textDecoration: 'none' }}>Contáctate con nosotros</a>
+            <a href="#" style={{ color: 'rgba(255,255,255,0.7)', fontSize: '14px', textDecoration: 'none' }}>Sitemap</a>
+            <a href="#" style={{ color: 'rgba(255,255,255,0.7)', fontSize: '14px', textDecoration: 'none' }}>Configuración de cookies</a>
+          </div>
+
+          {/* Social */}
+          <div>
+            <div style={{ fontSize: '14px', color: 'rgba(255,255,255,0.7)', marginBottom: '12px' }}>Conéctate con nosotros:</div>
+            <div style={{ display: 'flex', gap: '12px' }}>
+              {/* Social icon placeholders */}
+              {['FB', 'IG', 'X', 'LI', 'YT'].map(icon => (
+                <div key={icon} style={{
+                  width: '36px',
+                  height: '36px',
+                  borderRadius: '50%',
+                  border: '1px solid rgba(255,255,255,0.3)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '12px',
+                  color: 'rgba(255,255,255,0.7)',
+                  cursor: 'pointer'
+                }}>
+                  {icon}
+                </div>
+              ))}
             </div>
-            <p style={{ color: '#5f7470', fontSize: '14px', lineHeight: '1.6' }}>
-              Facilitamos los viajes globales. Olvídate del papeleo y las complicaciones burocráticas.
-            </p>
-          </div>
-
-          {/* Column 2: Compañía */}
-          <div>
-            <h4 style={{ fontSize: '16px', fontWeight: 700, color: '#002925', marginBottom: '24px' }}>Compañía</h4>
-            <ul style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              {['Sobre nosotros', 'Carreras', 'Blog', 'Prensa', 'Afiliados'].map(item => (
-                <li key={item}><a href="#" style={{ color: '#5f7470', fontSize: '14px', textDecoration: 'none' }}>{item}</a></li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Column 3: Soporte */}
-          <div>
-            <h4 style={{ fontSize: '16px', fontWeight: 700, color: '#002925', marginBottom: '24px' }}>Soporte</h4>
-            <ul style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              {['Centro de ayuda', 'Contáctanos', 'Estado de la solicitud'].map(item => (
-                <li key={item}><a href="#" style={{ color: '#5f7470', fontSize: '14px', textDecoration: 'none' }}>{item}</a></li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Column 4: Descubrir */}
-          <div>
-            <h4 style={{ fontSize: '16px', fontWeight: 700, color: '#002925', marginBottom: '24px' }}>Descubrir</h4>
-            <ul style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              {['Calculadora de visas', 'Destinos', 'Embajadas', 'Guías de viaje'].map(item => (
-                <li key={item}><a href="#" style={{ color: '#5f7470', fontSize: '14px', textDecoration: 'none' }}>{item}</a></li>
-              ))}
-            </ul>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div style={{ borderTop: '1px solid var(--color-border)', paddingTop: '32px', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px', alignItems: 'center' }}>
-          <div style={{ color: 'var(--color-text-light)', fontSize: '12px' }}>
-            © {new Date().getFullYear()} iVisa. Todos los derechos reservados.
-          </div>
-          <div style={{ display: 'flex', gap: '24px' }}>
-             {['Términos', 'Privacidad', 'Cookies'].map(item => (
-                <a key={item} href="#" style={{ color: 'var(--color-text-light)', fontSize: '12px' }}>{item}</a>
-             ))}
+        {/* Divider */}
+        <div style={{ borderTop: '1px solid rgba(255,255,255,0.15)', paddingTop: '24px' }}>
+          {/* Copyright */}
+          <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.5)', marginBottom: '16px', lineHeight: '1.6' }}>
+            © 2014-{new Date().getFullYear()} iVisa.com. Todos los derechos reservados. iVisa y el logotipo de iVisa son marcas registradas de iVisa.com.
+          </p>
+
+          {/* Legal Links */}
+          <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap', alignItems: 'center' }}>
+            <a href="#" style={{ color: 'rgba(255,255,255,0.5)', fontSize: '12px', textDecoration: 'none' }}>Condiciones del servicio</a>
+            <a href="#" style={{ color: 'rgba(255,255,255,0.5)', fontSize: '12px', textDecoration: 'none' }}>Política de privacidad</a>
+            <a href="#" style={{ color: 'rgba(255,255,255,0.5)', fontSize: '12px', textDecoration: 'none' }}>Aviso de recopilación</a>
+            <a href="tel:+34919016278" style={{ color: 'rgba(255,255,255,0.5)', fontSize: '12px', textDecoration: 'none' }}>+34 919 01 62 78</a>
           </div>
         </div>
       </div>

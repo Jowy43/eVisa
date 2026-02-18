@@ -1,13 +1,15 @@
 import { useState, Suspense, lazy } from 'react';
 import { MainLayout } from './layouts/MainLayout';
 import { HeroSection } from './features/landing/HeroSection';
-import { StatsSection } from './features/landing/StatsSection';
 import { WhyChooseUs } from './features/landing/WhyChooseUs';
+import { StatsSection } from './features/landing/StatsSection';
 import { HowItWorks } from './features/landing/HowItWorks';
 import { Reviews } from './features/landing/Reviews';
+import { WorldRecord } from './features/landing/WorldRecord';
+import { DownloadApp } from './features/landing/DownloadApp';
+import { Newsletter } from './features/landing/Newsletter';
+import { PopularDestinations } from './features/landing/PopularDestinations';
 import { StripeProvider } from './providers/StripeProvider';
-
-import { FAQ } from './features/landing/FAQ';
 
 // Lazy load the heavy Application Form
 const ApplicationForm = lazy(() => import('./features/application/ApplicationForm').then(module => ({ default: module.ApplicationForm })));
@@ -21,11 +23,14 @@ function App() {
         {!showForm ? (
           <>
             <HeroSection onApplyClick={() => setShowForm(true)} />
-            <StatsSection />
             <WhyChooseUs />
+            <StatsSection />
             <HowItWorks />
             <Reviews />
-            <FAQ />
+            <WorldRecord />
+            <DownloadApp />
+            <Newsletter />
+            <PopularDestinations />
           </>
         ) : (
           <div className="container" style={{ padding: '40px 0', maxWidth: '800px' }}>
